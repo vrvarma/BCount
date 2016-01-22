@@ -1,0 +1,13 @@
+PODS:
+  - CVCalendar (1.2.8)
+  - SwiftCharts (0.3)
+
+DEPENDENCIES:
+  - CVCalendar (~> 1.2.8)
+  - SwiftCharts (~> 0.3)
+
+SPEC CHECKSUMS:
+  CVCalendar: b7eda65b57b7ca6efae7c3d123a163882b3a3595
+  SwiftCharts: c66a449d58f9c811c467f865a47b1b6136b49499
+
+COCOAPODS: 0.39.0

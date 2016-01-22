@@ -7,14 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D15EBF61C4C36DE00DE25FB /* CABorderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15EBF51C4C36DE00DE25FB /* CABorderLayer.swift */; };
+		1D15EBF81C4C48F100DE25FB /* BCountDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15EBF71C4C48F000DE25FB /* BCountDisplayViewController.swift */; };
+		1DC0AC521C4937C300C1F0BE /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0AC501C4937C300C1F0BE /* Env.swift */; };
+		1DC0AC531C4937C300C1F0BE /* ExampleDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0AC511C4937C300C1F0BE /* ExampleDefaults.swift */; };
+		1DDDEF491C4EFEF7008C0DA8 /* VisitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEF481C4EFEF7008C0DA8 /* VisitInfo.swift */; };
+		1DDDEF4D1C4F4FA2008C0DA8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEF4C1C4F4FA2008C0DA8 /* CalendarViewController.swift */; };
+		1DF760EE1C4B3A4E004DF152 /* BCountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760ED1C4B3A4E004DF152 /* BCountTableViewController.swift */; };
+		1DF760F11C4B3BD3004DF152 /* BCountInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760F01C4B3BD3004DF152 /* BCountInfoTableViewCell.swift */; };
 		1DF7A8C81C3F579A00C551D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8C71C3F579A00C551D3 /* AppDelegate.swift */; };
-		1DF7A8CA1C3F579A00C551D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8C91C3F579A00C551D3 /* ViewController.swift */; };
+		1DF7A8CA1C3F579A00C551D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8C91C3F579A00C551D3 /* LoginViewController.swift */; };
 		1DF7A8CD1C3F579A00C551D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7A8CB1C3F579A00C551D3 /* Main.storyboard */; };
 		1DF7A8D01C3F579A00C551D3 /* BCount.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8CE1C3F579A00C551D3 /* BCount.xcdatamodeld */; };
-		1DF7A8D21C3F579A00C551D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7A8D11C3F579A00C551D3 /* Assets.xcassets */; };
 		1DF7A8D51C3F579A00C551D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7A8D31C3F579A00C551D3 /* LaunchScreen.storyboard */; };
 		1DF7A8E01C3F579A00C551D3 /* BCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8DF1C3F579A00C551D3 /* BCountTests.swift */; };
 		1DF7A8EB1C3F579A00C551D3 /* BCountUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8EA1C3F579A00C551D3 /* BCountUITests.swift */; };
+		1DF7A8FA1C3F58B100C551D3 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8F91C3F58B100C551D3 /* CoreDataStackManager.swift */; };
+		1DF7A8FD1C3F5A1A00C551D3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8FC1C3F5A1A00C551D3 /* Reachability.swift */; };
+		1DF7A9001C3F5D8900C551D3 /* BCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A8FF1C3F5D8900C551D3 /* BCClient.swift */; };
+		1DF7A9021C3F6E9500C551D3 /* BCConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A9011C3F6E9500C551D3 /* BCConvenience.swift */; };
+		1DF7A9041C3F799700C551D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7A9031C3F799700C551D3 /* Assets.xcassets */; };
+		1DF7A9091C47571900C551D3 /* BCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A9081C47571900C551D3 /* BCConstants.swift */; };
+		1DF7A90B1C48753800C551D3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A90A1C48753800C551D3 /* ChartViewController.swift */; };
+		1DF7A9111C4893EB00C551D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A9101C4893EB00C551D3 /* UserInfo.swift */; };
+		1DF7A9131C48952B00C551D3 /* BCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7A9121C48952B00C551D3 /* BCount.swift */; };
+		A88B4C6EE3418865A4A2433A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0230B85C0D4CC3B4D80B975 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D15EBF51C4C36DE00DE25FB /* CABorderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CABorderLayer.swift; sourceTree = "<group>"; };
+		1D15EBF71C4C48F000DE25FB /* BCountDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCountDisplayViewController.swift; sourceTree = "<group>"; };
+		1DC0AC501C4937C300C1F0BE /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		1DC0AC511C4937C300C1F0BE /* ExampleDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDefaults.swift; sourceTree = "<group>"; };
+		1DDDEF481C4EFEF7008C0DA8 /* VisitInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitInfo.swift; sourceTree = "<group>"; };
+		1DDDEF4C1C4F4FA2008C0DA8 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		1DF760ED1C4B3A4E004DF152 /* BCountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCountTableViewController.swift; sourceTree = "<group>"; };
+		1DF760F01C4B3BD3004DF152 /* BCountInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCountInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1DF7A8C41C3F579A00C551D3 /* BCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7A8C71C3F579A00C551D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1DF7A8C91C3F579A00C551D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1DF7A8C91C3F579A00C551D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1DF7A8CC1C3F579A00C551D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DF7A8CF1C3F579A00C551D3 /* BCount.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BCount.xcdatamodel; sourceTree = "<group>"; };
-		1DF7A8D11C3F579A00C551D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DF7A8D41C3F579A00C551D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DF7A8D61C3F579A00C551D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF7A8DB1C3F579A00C551D3 /* BCountTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +73,18 @@
 		1DF7A8E61C3F579A00C551D3 /* BCountUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7A8EA1C3F579A00C551D3 /* BCountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCountUITests.swift; sourceTree = "<group>"; };
 		1DF7A8EC1C3F579A00C551D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DF7A8F91C3F58B100C551D3 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		1DF7A8FC1C3F5A1A00C551D3 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		1DF7A8FF1C3F5D8900C551D3 /* BCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCClient.swift; sourceTree = "<group>"; };
+		1DF7A9011C3F6E9500C551D3 /* BCConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCConvenience.swift; sourceTree = "<group>"; };
+		1DF7A9031C3F799700C551D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DF7A9081C47571900C551D3 /* BCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCConstants.swift; sourceTree = "<group>"; };
+		1DF7A90A1C48753800C551D3 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		1DF7A9101C4893EB00C551D3 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		1DF7A9121C48952B00C551D3 /* BCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCount.swift; sourceTree = "<group>"; };
+		BAE6844F394F1F7B4014B5E9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E434E23E880AEBE848D8DB3E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F0230B85C0D4CC3B4D80B975 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88B4C6EE3418865A4A2433A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DF760EF1C4B3BC8004DF152 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DF760F01C4B3BD3004DF152 /* BCountInfoTableViewCell.swift */,
+				1D15EBF51C4C36DE00DE25FB /* CABorderLayer.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		1DF7A8BB1C3F579A00C551D3 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +129,8 @@
 				1DF7A8DE1C3F579A00C551D3 /* BCountTests */,
 				1DF7A8E91C3F579A00C551D3 /* BCountUITests */,
 				1DF7A8C51C3F579A00C551D3 /* Products */,
+				CCCE693EC2E06FE2F6CECFF0 /* Pods */,
+				A763E86405D4B5088097FC7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +147,11 @@
 		1DF7A8C61C3F579A00C551D3 /* BCount */ = {
 			isa = PBXGroup;
 			children = (
+				1DF7A8F81C3F589400C551D3 /* Model */,
+				1DF760EF1C4B3BC8004DF152 /* View */,
+				1DF7A9071C474F8C00C551D3 /* Controller */,
+				1DF7A9051C474F2600C551D3 /* Supporting Files */,
 				1DF7A8C71C3F579A00C551D3 /* AppDelegate.swift */,
-				1DF7A8C91C3F579A00C551D3 /* ViewController.swift */,
-				1DF7A8CB1C3F579A00C551D3 /* Main.storyboard */,
-				1DF7A8D11C3F579A00C551D3 /* Assets.xcassets */,
-				1DF7A8D31C3F579A00C551D3 /* LaunchScreen.storyboard */,
-				1DF7A8D61C3F579A00C551D3 /* Info.plist */,
 				1DF7A8CE1C3F579A00C551D3 /* BCount.xcdatamodeld */,
 			);
 			path = BCount;
@@ -128,6 +175,87 @@
 			path = BCountUITests;
 			sourceTree = "<group>";
 		};
+		1DF7A8F81C3F589400C551D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7A8FE1C3F5D7400C551D3 /* Client */,
+				1DF7A8F91C3F58B100C551D3 /* CoreDataStackManager.swift */,
+				1DF7A9101C4893EB00C551D3 /* UserInfo.swift */,
+				1DF7A9121C48952B00C551D3 /* BCount.swift */,
+				1DDDEF481C4EFEF7008C0DA8 /* VisitInfo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1DF7A8FB1C3F59E200C551D3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7A8FC1C3F5A1A00C551D3 /* Reachability.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		1DF7A8FE1C3F5D7400C551D3 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7A8FB1C3F59E200C551D3 /* Network */,
+				1DF7A8FF1C3F5D8900C551D3 /* BCClient.swift */,
+				1DF7A9011C3F6E9500C551D3 /* BCConvenience.swift */,
+				1DF7A9081C47571900C551D3 /* BCConstants.swift */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		1DF7A9051C474F2600C551D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7A9061C474F6000C551D3 /* Storyboard */,
+				1DF7A8D61C3F579A00C551D3 /* Info.plist */,
+				1DF7A9031C3F799700C551D3 /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DF7A9061C474F6000C551D3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7A8CB1C3F579A00C551D3 /* Main.storyboard */,
+				1DF7A8D31C3F579A00C551D3 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		1DF7A9071C474F8C00C551D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DC0AC501C4937C300C1F0BE /* Env.swift */,
+				1DC0AC511C4937C300C1F0BE /* ExampleDefaults.swift */,
+				1DF7A8C91C3F579A00C551D3 /* LoginViewController.swift */,
+				1DDDEF4C1C4F4FA2008C0DA8 /* CalendarViewController.swift */,
+				1DF7A90A1C48753800C551D3 /* ChartViewController.swift */,
+				1DF760ED1C4B3A4E004DF152 /* BCountTableViewController.swift */,
+				1D15EBF71C4C48F000DE25FB /* BCountDisplayViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A763E86405D4B5088097FC7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0230B85C0D4CC3B4D80B975 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCCE693EC2E06FE2F6CECFF0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAE6844F394F1F7B4014B5E9 /* Pods.debug.xcconfig */,
+				E434E23E880AEBE848D8DB3E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +263,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DF7A8EF1C3F579A00C551D3 /* Build configuration list for PBXNativeTarget "BCount" */;
 			buildPhases = (
+				96AF9FD58E10FE6D2C7B98D8 /* Check Pods Manifest.lock */,
 				1DF7A8C01C3F579A00C551D3 /* Sources */,
 				1DF7A8C11C3F579A00C551D3 /* Frameworks */,
 				1DF7A8C21C3F579A00C551D3 /* Resources */,
+				4C5E0714F7AA1E7C6A46C97F /* Embed Pods Frameworks */,
+				115C60FAAFB86D20D4E9B0C9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,7 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF7A8D51C3F579A00C551D3 /* LaunchScreen.storyboard in Resources */,
-				1DF7A8D21C3F579A00C551D3 /* Assets.xcassets in Resources */,
+				1DF7A9041C3F799700C551D3 /* Assets.xcassets in Resources */,
 				1DF7A8CD1C3F579A00C551D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,14 +385,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		115C60FAAFB86D20D4E9B0C9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C5E0714F7AA1E7C6A46C97F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96AF9FD58E10FE6D2C7B98D8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1DF7A8C01C3F579A00C551D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF7A8CA1C3F579A00C551D3 /* ViewController.swift in Sources */,
+				1DF7A8CA1C3F579A00C551D3 /* LoginViewController.swift in Sources */,
+				1DF7A8FA1C3F58B100C551D3 /* CoreDataStackManager.swift in Sources */,
 				1DF7A8D01C3F579A00C551D3 /* BCount.xcdatamodeld in Sources */,
+				1DDDEF491C4EFEF7008C0DA8 /* VisitInfo.swift in Sources */,
+				1DF7A9111C4893EB00C551D3 /* UserInfo.swift in Sources */,
+				1DF7A9001C3F5D8900C551D3 /* BCClient.swift in Sources */,
+				1DF7A8FD1C3F5A1A00C551D3 /* Reachability.swift in Sources */,
+				1DF760F11C4B3BD3004DF152 /* BCountInfoTableViewCell.swift in Sources */,
+				1DF7A90B1C48753800C551D3 /* ChartViewController.swift in Sources */,
+				1DC0AC531C4937C300C1F0BE /* ExampleDefaults.swift in Sources */,
+				1DDDEF4D1C4F4FA2008C0DA8 /* CalendarViewController.swift in Sources */,
+				1DF760EE1C4B3A4E004DF152 /* BCountTableViewController.swift in Sources */,
 				1DF7A8C81C3F579A00C551D3 /* AppDelegate.swift in Sources */,
+				1DF7A9091C47571900C551D3 /* BCConstants.swift in Sources */,
+				1DC0AC521C4937C300C1F0BE /* Env.swift in Sources */,
+				1D15EBF61C4C36DE00DE25FB /* CABorderLayer.swift in Sources */,
+				1DF7A9021C3F6E9500C551D3 /* BCConvenience.swift in Sources */,
+				1DF7A9131C48952B00C551D3 /* BCount.swift in Sources */,
+				1D15EBF81C4C48F100DE25FB /* BCountDisplayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +594,7 @@
 		};
 		1DF7A8F01C3F579A00C551D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAE6844F394F1F7B4014B5E9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCount/Info.plist;
@@ -410,6 +606,7 @@
 		};
 		1DF7A8F11C3F579A00C551D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E434E23E880AEBE848D8DB3E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCount/Info.plist;
@@ -486,6 +683,7 @@
 				1DF7A8F11C3F579A00C551D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DF7A8F21C3F579A00C551D3 /* Build configuration list for PBXNativeTarget "BCountTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +692,7 @@
 				1DF7A8F41C3F579A00C551D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DF7A8F51C3F579A00C551D3 /* Build configuration list for PBXNativeTarget "BCountUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +701,7 @@
 				1DF7A8F71C3F579A00C551D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

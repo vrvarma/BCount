@@ -2,9 +2,10 @@
 
 
 ##Introduction
-     A patient diagnosed with Leukaemia is given a book, to keep the blood count during each visit.  The nurse practicioner is supposed to enter the counts manually.  The patient onces discharged has to keep this book for each follow up, Emergency room visits.
      
-     BCount is an iOS app to store, retrieve and view blood counts.  
+A patient diagnosed with Leukaemia is given a book, to keep the blood count during each visit.  The nurse practicioner is supposed to enter the counts manually.  The patient onces discharged has to keep this book for each follow up, Emergency room visits.
+
+BCount is an iOS app to store, retrieve and view blood counts.  
 
 ##User Notes
 1.  Sign up for an account using this [Sign Up](http://jbossews-soulbuzz.rhcloud.com/signup.html) link

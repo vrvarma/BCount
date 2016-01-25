@@ -21,6 +21,6 @@ BCount is an iOS app to store, retrieve and view blood counts.
 1. The BCount project workspace has been generated using [CocoaPods] (https://cocoapods.org/) 
 2. All Blood count information is stored in Core Data, user settings are archived using KeyArchiver
 2. The app uses the following open-source libraries
-  - [CVCalendar] (https://github.com/Mozharovsky/CVCalendar)
-  - [SwiftCharts] (https://github.com/i-schuetz/SwiftCharts)
-  - [IJReachabilityType] (https://github.com/Isuru-Nanayakkara/IJReachability)
+  - [CVCalendar] (https://github.com/Mozharovsky/CVCalendar) : A custom visual calendar for iOS 8 written in Swift
+  - [SwiftCharts] (https://github.com/i-schuetz/SwiftCharts) : An easy to use and highly customizable charts library for iOS
+  - [IJReachabilityType] (https://github.com/Isuru-Nanayakkara/IJReachability) :A simple class to check for internet connection availability in Swift. Works for both 3G and WiFi connections.

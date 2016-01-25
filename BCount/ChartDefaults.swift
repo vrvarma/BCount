@@ -9,7 +9,7 @@
 import UIKit
 import SwiftCharts
 
-struct ExamplesDefaults {
+struct ChartDefaults {
     
     static var chartSettings: ChartSettings {
         if Env.iPad {
@@ -54,15 +54,15 @@ struct ExamplesDefaults {
     }
     
     static var labelSettings: ChartLabelSettings {
-        return ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        return ChartLabelSettings(font: labelFont)
     }
     
     static var labelFont: UIFont {
-        return ExamplesDefaults.fontWithSize(Env.iPad ? 14 : 11)
+        return fontWithSize(Env.iPad ? 14 : 11)
     }
     
     static var labelFontSmall: UIFont {
-        return ExamplesDefaults.fontWithSize(Env.iPad ? 12 : 10)
+        return fontWithSize(Env.iPad ? 12 : 10)
     }
     
     static func fontWithSize(size: CGFloat) -> UIFont {

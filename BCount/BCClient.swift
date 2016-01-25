@@ -18,6 +18,8 @@ class BCClient {
     var userInfo: UserInfo!
     var bcount: BCount!
     
+    var config = UserConfig.unarchivedInstance() ?? UserConfig()
+    
     init() {
         session = NSURLSession.sharedSession()
     }

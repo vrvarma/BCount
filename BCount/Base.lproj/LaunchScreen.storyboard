@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,21 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Cl3-NF-f7W">
-                                <rect key="frame" x="117" y="561" width="367" height="19"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="  Copyright © 2016 Vikas Varma. All rights reserved.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Italic"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 Vikas Varma. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cl3-NF-f7W">
+                                <rect key="frame" x="20" y="561" width="560" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="cGO-ar-IQP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blood_drop_256" highlightedImage="blood_drop" translatesAutoresizingMaskIntoConstraints="NO" id="h1O-Yt-OK3">
-                                <rect key="frame" x="236" y="75" width="128" height="128"/>
+                                <rect key="frame" x="236" y="96" width="128" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BCount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65X-hj-SPU">
                                 <rect key="frame" x="236" y="278" width="128" height="43"/>
@@ -40,13 +37,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="h1O-Yt-OK3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="55" id="1NA-kZ-NjM"/>
+                            <constraint firstItem="h1O-Yt-OK3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="76" id="1NA-kZ-NjM"/>
                             <constraint firstItem="h1O-Yt-OK3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2xJ-vM-HvX"/>
-                            <constraint firstItem="Cl3-NF-f7W" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MkV-wR-g1o"/>
+                            <constraint firstAttribute="bottom" secondItem="Cl3-NF-f7W" secondAttribute="bottom" constant="20" symbolic="YES" id="Izb-d1-tOy"/>
                             <constraint firstItem="65X-hj-SPU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NXQ-0X-qbE"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Cl3-NF-f7W" secondAttribute="bottom" constant="20" id="xQN-JK-Umc"/>
+                            <constraint firstItem="Cl3-NF-f7W" firstAttribute="centerX" secondItem="65X-hj-SPU" secondAttribute="centerX" id="O2P-l7-6we"/>
+                            <constraint firstItem="Cl3-NF-f7W" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="WSi-X8-P8M"/>
                             <constraint firstItem="65X-hj-SPU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="y1Z-ad-ltf"/>
                         </constraints>
                     </view>

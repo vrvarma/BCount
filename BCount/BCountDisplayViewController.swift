@@ -9,29 +9,21 @@
 import UIKit
 import CoreData
 
-class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
+class BCountDisplayViewController: UIViewController, UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     var bcount:BCount!
-    
     var addFlag: Bool!
-    
     var selectedDate:NSDate!
+    var reasonPickerData: [String] = [String]()
     
     @IBOutlet weak var wbcTextField: UITextField!
     @IBOutlet weak var rbcTextField: UITextField!
     @IBOutlet weak var hgbTextField: UITextField!
-    
     @IBOutlet weak var plateletTextField: UITextField!
-    
     @IBOutlet weak var ancTextField: UITextField!
-    
     @IBOutlet weak var updateAddButton: UIButton!
-    
     @IBOutlet weak var notesTextField: UITextField!
-    
-    @IBOutlet weak var reasonPickerView: UIPickerView!
-    
-    var pickerData: [String] = [String]()
+    @IBOutlet weak var reasonTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     
     override func viewDidLoad() {
@@ -41,9 +33,10 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         hgbTextField.delegate = self
         plateletTextField.delegate = self
         ancTextField.delegate = self
-        pickerData = ["SICK", "FOLLOW_UP", "TRANSFUSION"]
+        reasonPickerData = ["SICK", "FOLLOW_UP", "TRANSFUSION"]
         
-        dateTextField.inputAccessoryView = toolBar
+        dateTextField.inputAccessoryView = datePickerToolBar        
+        reasonTextField.inputAccessoryView = reasonToolBar
         populateData()
     }
     
@@ -56,10 +49,12 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         
         let datePickerView:UIDatePicker = UIDatePicker()
         
-        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
         if let _ = selectedDate {
+            
             datePickerView.date = selectedDate
         }else{
+            
             selectedDate = NSDate()
             datePickerView.date = selectedDate
         }
@@ -78,15 +73,13 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    
-    
     func datePickerValueChanged(sender:UIDatePicker) {
         
         selectedDate = sender.date
         dateTextField.text = NSDateFormatter.localizedStringFromDate(selectedDate,
             dateStyle: .MediumStyle,
             timeStyle: .MediumStyle)
-        dateTextField.resignFirstResponder()
+        //dateTextField.resignFirstResponder()
         
     }
     override func viewDidAppear(animated: Bool) {
@@ -95,6 +88,7 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         
         
     }
+  
     //Picker Delegate Method
     // The number of columns of data
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -103,19 +97,20 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
     
     // The number of rows of data
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return reasonPickerData.count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return reasonPickerData[row]
     }
     
     // Catpure the picker view selection
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        
+        reasonTextField.text = reasonPickerData[row]
     }
+    
     func populateData(){
         
         if bcount != nil {
@@ -141,14 +136,18 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
             
             if let reason = bcount.visitInfo?.reason {
                 
-                if let result = pickerData.indexOf(reason){
-                    
-                    reasonPickerView.selectRow(result, inComponent: 0, animated: false)
-                }
+                reasonTextField.text = reason
+            }else{
+                
+                reasonTextField.text = reasonPickerData[0]
             }
             updateAddButton.setTitle("Update",forState: .Normal)
         }else{
-            
+            dateTextField.text = NSDateFormatter.localizedStringFromDate(NSDate(),
+                dateStyle: .MediumStyle,
+                timeStyle: .MediumStyle)
+            reasonTextField.text = reasonPickerData[0]
+            selectedDate = NSDate()
             addFlag = true
             updateAddButton.setTitle("Add",forState: .Normal)
         }
@@ -173,13 +172,13 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         
         info = ["createdDate": BCClient.sharedDateFormatter.stringFromDate(selectedDate) as String,
             "userName": BCClient.sharedInstance.userId as String,
-            "wbc": Double(wbcTextField.text!)!,
-            "hgb":Double(hgbTextField.text!)!,
-            "rbc":Double(rbcTextField.text!)!,
-            "platelet":Double(plateletTextField.text!)!,
+            "wbc": self.parseDouble(wbcTextField.text!),
+            "hgb":self.parseDouble(hgbTextField.text!),
+            "rbc":self.parseDouble(rbcTextField.text!),
+            "platelet":self.parseDouble(plateletTextField.text!),
             "note":notesTextField.text!,
-            "reason":pickerData[reasonPickerView.selectedRowInComponent(0)],
-            "anc":Double(ancTextField.text!)!
+            "reason":reasonTextField.text!,
+            "anc":self.parseDouble(ancTextField.text!)
         ]
         BCClient.sharedInstance.addBcount(info){ data, errorString in
             if let error = errorString  {
@@ -211,13 +210,13 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         var info: [String: AnyObject]
         
         info = ["createdDate": BCClient.sharedDateFormatter.stringFromDate(selectedDate) as String,
-            "wbc": Double(wbcTextField.text!)!,
-            "hgb":Double(hgbTextField.text!)!,
-            "rbc":Double(rbcTextField.text!)!,
-            "platelet":Double(plateletTextField.text!)!,
-            "anc":Double(ancTextField.text!)!,
+            "wbc": self.parseDouble(wbcTextField.text!),
+            "hgb":self.parseDouble(hgbTextField.text!),
+            "rbc":self.parseDouble(rbcTextField.text!),
+            "platelet":self.parseDouble(plateletTextField.text!),
+            "anc":self.parseDouble(ancTextField.text!),
             "note":notesTextField.text!,
-            "reason":pickerData[reasonPickerView.selectedRowInComponent(0)],
+            "reason":reasonTextField.text!,
             "userName":BCClient.sharedInstance.userId
         ]
         
@@ -232,11 +231,11 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
             else {
                 self.sharedContext.performBlockAndWait({
                     self.bcount.createdDate = self.selectedDate!
-                    self.bcount.wbc = Double(self.wbcTextField.text!)!
-                    self.bcount.hgb = Double(self.hgbTextField.text!)!
-                    self.bcount.rbc = Double(self.rbcTextField.text!)!
-                    self.bcount.platelet = Double(self.plateletTextField.text!)!
-                    self.bcount.anc = Double(self.ancTextField.text!)!
+                    self.bcount.wbc = self.parseDouble(self.wbcTextField.text!)
+                    self.bcount.hgb = self.parseDouble(self.hgbTextField.text!)
+                    self.bcount.rbc = self.parseDouble(self.rbcTextField.text!)
+                    self.bcount.platelet = self.parseDouble(self.plateletTextField.text!)
+                    self.bcount.anc = self.parseDouble(self.ancTextField.text!)
                     
                     CoreDataStackManager.sharedInstance().saveContext()
                 })
@@ -249,27 +248,24 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
+    
+    func parseDouble (value: String!)->Double {
+        
+        if let val = value {
+            if(val != ""){
+                
+                return Double(val)!
+            }
+        }
+        return 0
+    }
     // MARK: - Core Data Convenience
     
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext!
     }
     
-    func textField(textField: UITextField,
-        shouldChangeCharactersInRange range: NSRange,
-        replacementString string: String) -> Bool {
-            
-            let inverseSet = NSCharacterSet(charactersInString:"0123456789.").invertedSet
-            
-            let components = string.componentsSeparatedByCharactersInSet(inverseSet)
-            
-            let filtered = components.joinWithSeparator("")
-            
-            return string == filtered
-            
-    }
-    
-    var toolBar:UIToolbar{
+    var datePickerToolBar:UIToolbar{
         
         let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
         
@@ -296,7 +292,7 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         
         label.textColor = UIColor.whiteColor()
         
-        label.text = "Select a due date"
+        label.text = "Select a date"
         
         label.textAlignment = NSTextAlignment.Center
         
@@ -306,21 +302,71 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate{
         return toolBar
     }
     
+    var reasonToolBar: UIToolbar{
+        
+        let pickerView = UIPickerView()
+        
+        pickerView.delegate = self
+        
+        reasonTextField.inputView = pickerView
+        
+        let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
+        
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        
+        toolBar.barStyle = UIBarStyle.BlackTranslucent
+        
+        toolBar.tintColor = UIColor.whiteColor()
+        
+        toolBar.backgroundColor = UIColor.blackColor()
+        
+        
+        let defaultButton = UIBarButtonItem(title: "Default", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedToolBarBtn:")
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneReasonPressed:")
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        
+        label.font = UIFont(name: "Helvetica", size: 12)
+        
+        label.backgroundColor = UIColor.clearColor()
+        
+        label.textColor = UIColor.whiteColor()
+        
+        label.text = "Pick a Reason"
+        
+        label.textAlignment = NSTextAlignment.Center
+        
+        let textBtn = UIBarButtonItem(customView: label)
+        
+        toolBar.setItems([defaultButton,flexSpace,textBtn,flexSpace,doneButton], animated: true)
+        return toolBar
+    }
+    
+    func tappedToolBarBtn(sender: UIBarButtonItem) {
+        
+        reasonTextField.text = reasonPickerData[0]
+        reasonTextField.resignFirstResponder()
+    }
+    
     func donePressed(sender: UIBarButtonItem) {
         
         dateTextField.resignFirstResponder()
+    }
+    
+    func doneReasonPressed(sender: UIBarButtonItem) {
         
+        reasonTextField.resignFirstResponder()
     }
     
     func tappedTodayToolBarBtn(sender: UIBarButtonItem) {
         
-        let dateformatter = NSDateFormatter()
-        
-        dateformatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        
-        dateformatter.timeStyle = NSDateFormatterStyle.NoStyle
-        
-        dateTextField.text = dateformatter.stringFromDate(NSDate())
+        selectedDate = NSDate()
+        dateTextField.text = NSDateFormatter.localizedStringFromDate(NSDate(),
+            dateStyle: .MediumStyle,
+            timeStyle: .MediumStyle)
         
         dateTextField.resignFirstResponder()
     }

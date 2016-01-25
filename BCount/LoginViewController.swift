@@ -37,6 +37,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate,NSFetchedResult
         //Make the email field the responder
         emailTextField.becomeFirstResponder()
         
+        // Subscribe to keyboard notifications to allow the view to raise when necessary
+        subscribeToKeyboardNotifications()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,6 +69,54 @@ class LoginViewController: UIViewController, UITextFieldDelegate,NSFetchedResult
                 }
             }
         }
+    }
+    
+    
+    //Subscribe to keyboard notifications.
+    func subscribeToKeyboardNotifications() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:"    , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification,
+            object: nil)
+        
+    }
+    
+    //Unsubscribe from keyboard notifications
+    //called when the controller exits.
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    //Keyboard functions.
+    //slide the picture up, to show the keyboard
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if passwordTextField.isFirstResponder() {
+            
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    
+    //slide back the keyboard, when the user is done editing
+    func keyboardWillDisappear(notification: NSNotification){
+        
+        if passwordTextField.isFirstResponder() {
+            
+            view.frame.origin.y = 0
+        }
+    }
+    
+    //method to calculates the keyboard height
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
     }
     
     func completeLogin() {
@@ -112,6 +163,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate,NSFetchedResult
         
         
         
+    }
+    
+    
+    @IBAction func openBCountSignup(sender: UIButton) {
+        
+         UIApplication.sharedApplication().openURL(NSURL(string: BCClient.Constants.BCountSignUpURL)!)
     }
     
     // MARK: - Core Data Convenience

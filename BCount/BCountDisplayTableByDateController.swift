@@ -1,4 +1,14 @@
 //
+//  BCountTableByDateController.swift
+//  BCount
+//
+//  Created by Vikas Varma on 1/22/16.
+//  Copyright © 2016 Vikas Varma. All rights reserved.
+//
+
+import Foundation
+
+//
 //  BCountTableViewController.swift
 //  BCount
 //
@@ -10,12 +20,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class BCountTableViewController:UIViewController, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate{
+class BCountDisplayTableByDateController:UIViewController, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate{
     
     var userInfo:UserInfo!
+    var selectedDate:NSDate!
     
-    @IBOutlet weak var add: UIBarButtonItem!
-    @IBOutlet weak var refresh: UIBarButtonItem!
     @IBOutlet weak var activitityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,12 +33,12 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItems = [refresh,add]
         tableView.delegate = self
         
         userInfo = BCClient.sharedInstance.userInfo
         do {
             try fetchedResultsController.performFetch()
+            print("Yellow \(fetchedResultsController.fetchedObjects?.count)")
         } catch {}
         
     }
@@ -70,7 +79,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    // MARK: - Core Data Convenience    
+    // MARK: - Core Data Convenience
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext!
     }
@@ -81,7 +90,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         let fetchRequest = NSFetchRequest(entityName: "BCount")
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdDate", ascending: false)]
-        fetchRequest.predicate = NSPredicate(format: "userInfo == %@", self.userInfo);
+        fetchRequest.predicate = self.predicateForDayFromDate()
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
             managedObjectContext: self.sharedContext,
@@ -91,6 +100,21 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         return fetchedResultsController
         
     }()
+    
+    func predicateForDayFromDate() -> NSPredicate {
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let components = calendar!.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: self.selectedDate)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let startDate = calendar!.dateFromComponents(components)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        let endDate = calendar!.dateFromComponents(components)
+        
+        return NSPredicate(format: "userInfo == %@ AND (createdDate >= %@ AND createdDate =< %@)", argumentArray:[self.userInfo,startDate!, endDate!])
+    }
     
     //Table view Delegate methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,13 +147,13 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         
         //Show the selected meme in a Detail View
         let bcount = fetchedResultsController.objectAtIndexPath(indexPath) as! BCount
-        //print("Update BCount \(bcount.id)")
+        print("Update BCount \(bcount.id)")
         BCClient.sharedInstance.bcount = bcount
         let controller = storyboard!.instantiateViewControllerWithIdentifier("BCountDisplayViewController") as! BCountDisplayViewController
         controller.bcount = bcount
         
         navigationController?.pushViewController(controller, animated: true)
-        
+        print("Hello World!!")
     }
     
     func tableView(tableView: UITableView,
@@ -143,11 +167,9 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
                 BCClient.sharedInstance.deleteBcount(bcount.id){ result, errorString -> Void in
                     if let result = result {
                         // Here we get the bcount, then delete it from core data
-                        if result {
+                        if result == true{
                             self.sharedContext.performBlockAndWait(
-                                {
-                                    
-                                    self.sharedContext.deleteObject(bcount)
+                                {self.sharedContext.deleteObject(bcount)
                                     CoreDataStackManager.sharedInstance().saveContext()
                             })
                         }
@@ -257,49 +279,4 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    //Delete all photos from the sharedContext
-    private func deleteAllBCounts() {
-        
-        for bcount in fetchedResultsController.fetchedObjects as! [BCount] {
-            sharedContext.deleteObject(bcount)
-        }
-        CoreDataStackManager.sharedInstance().saveContext()
-    }
-    @IBAction func refreshData(sender: UIBarButtonItem) {
-        
-        self.activitityIndicator.startAnimating()
-        deleteAllBCounts()
-        fetchBcountData()
-        
-    }
-    @IBAction func addNewCount(sender: UIBarButtonItem) {
-        
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("BCountDisplayViewController") as! BCountDisplayViewController
-        controller.bcount = nil
-        
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    
-    @IBAction func setEditMode(sender: UIBarButtonItem) {
-        
-        print(tableView.editing)
-        
-        if tableView.editing == true{
-            
-            //We're in edit mode
-            //Set the tableView to non-edit mode
-            tableView
-                .setEditing(false, animated: true)
-            sender.style = UIBarButtonItemStyle.Plain
-            sender.title = "Edit"
-        }
-        else{
-            //set the tableView to edit mode
-            //change the item's title
-            tableView.setEditing(true, animated: true)
-            sender.title = "Done"
-            sender.style = UIBarButtonItemStyle.Done
-        }
-    }
 }

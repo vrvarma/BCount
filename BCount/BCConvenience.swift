@@ -152,7 +152,10 @@ extension BCClient{
         
         if IJReachability.isConnectedToNetwork(){
             
-            let parameters = [String : AnyObject] ()
+            let parameters :[String : AnyObject]=[
+                "page":"0",
+                "max_per_page":self.config.max_per_page
+            ]
             
             let headers : [String: String] = [
                 "Accept": "application/json",
@@ -202,9 +205,10 @@ extension BCClient{
                 "Content-Type": "application/json",
                 "Authorization":"Bearer \(self.access_token)"
             ]
-            _ = taskForDELETEMethod(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)", parameters: parameters,headers:headers) { data, error in
-                print(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)")
+            _ = taskForDELETEMethod(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)", parameters: parameters,headers:headers) { result, error in
+                //print(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)")
                 /* 3. Send the desired value(s) to completion handler */
+                // print(error)
                 if error != nil {
                     
                     completionHandler(result: false, errorString: error!.localizedFailureReason!)
@@ -234,7 +238,7 @@ extension BCClient{
             ]
             
             let jsonBody = count as! [String: AnyObject]
-                       
+            
             _ = taskForPOSTMethod(Constants.baseSecuredBCountURL + BCClient.Methods.bCount, parameters: parameters,headers:headers,jsonBody: jsonBody) { data, error in
                 
                 /* 3. Send the desired value(s) to completion handler */
@@ -298,8 +302,8 @@ extension BCClient{
             
         }
     }
-
-
+    
+    
     
     func formatError(error: String) -> String{
         

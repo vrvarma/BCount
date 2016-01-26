@@ -57,12 +57,13 @@
                                     <rect key="frame" x="157" y="116" width="288" height="30"/>
                                 </variation>
                             </textField>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtF-fN-5l0" customClass="BorderedButton" customModule="BCount" customModuleProvider="target">
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtF-fN-5l0">
                                 <rect key="frame" x="156" y="464" width="288" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="278" y="185" width="46" height="30"/>

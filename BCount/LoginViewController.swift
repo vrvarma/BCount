@@ -128,16 +128,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate,NSFetchedResult
         var user: UserInfo!
         
         let userList = self.fetchedResultsController.fetchedObjects as! [UserInfo]
-        //print(userList.count)
+    
         if userList.count == 0{
             self.sharedContext.performBlockAndWait({
-                //print("Got here@ adding userInfo")
+                
                 user = UserInfo(dictionary: BCClient.sharedInstance.userMapObj!,context: self.sharedContext)
                 BCClient.sharedInstance.userInfo = user
             })
         }else{
             //Update the cached data
-            //print("Got here@ updating userInfo")
+            
             let userList = self.fetchedResultsController.fetchedObjects as! [UserInfo]
             user = userList[0]
             self.sharedContext.performBlockAndWait({

@@ -184,10 +184,8 @@ extension BCountCalendarViewController :CVCalendarViewDelegate, CVCalendarMenuVi
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         
         viewCountButton.enabled = true
-        print("\(dayView.date.commonDescription) is selected!")
         
         selectedDate = dayView.date.convertedDate()!
-        print("\(selectedDate) is selected!")
     }
     
     func presentedDateUpdated(date: CVDate) {

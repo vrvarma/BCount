@@ -42,7 +42,6 @@ class BCClient {
         if let error = parsingError {
             completionHandler(result: nil, error: error)
         } else {
-            //println(parsedResult)
             completionHandler(result: parsedResult, error: nil)
         }
     }
@@ -83,7 +82,7 @@ class BCClient {
                 request.addValue(value, forHTTPHeaderField: key)
             }
         }
-        //println(request)
+        
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             
@@ -126,10 +125,7 @@ class BCClient {
             }
         }
         
-        print(body)
         request.HTTPBody = body
-        
-        print(request)
         
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
@@ -166,8 +162,6 @@ class BCClient {
                 request.addValue(value, forHTTPHeaderField: key)
             }
         }
-       
-        //print(request)
         
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
@@ -211,11 +205,7 @@ class BCClient {
             // jsonifyError = error
             body = nil
         }
-
-        print(jsonBody)
-        request.HTTPBody = body 
-        
-        //println(request)
+        request.HTTPBody = body
         
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
@@ -234,30 +224,6 @@ class BCClient {
         
         return task
     }
-    
-    func downloadImage(imagePath: String, completionHandler: (imageData: NSData?, error: NSError?) ->  Void) -> NSURLSessionTask {
-        
-        let url = NSURL(string: imagePath)!
-        
-        //print("imageUrl \(url)")
-        
-        let request = NSURLRequest(URL: url)
-        
-        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
-            
-            if let error = downloadError {
-                let newError = BCClient.errorForData(data, response: response, error: error)
-                completionHandler(imageData: nil, error: newError)
-            } else {
-                completionHandler(imageData: data, error: nil)
-            }
-        }
-        
-        task.resume()
-        
-        return task
-    }
-    
     
     // MARK: - Helpers
     

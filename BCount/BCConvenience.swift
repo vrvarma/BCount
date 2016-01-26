@@ -42,8 +42,7 @@ extension BCClient{
             let apiLoginString = "\(Constants.api_key):\(Constants.secret_key)"
             let apiLoginData = apiLoginString.dataUsingEncoding(NSUTF8StringEncoding)!
             let base64ApiLoginString = apiLoginData.base64EncodedStringWithOptions([])
-            
-            //print(base64ApiLoginString)
+
             let headers : [String: String] = [
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -65,7 +64,7 @@ extension BCClient{
                             completionHandler(success: false, errorString: parseError?.localizedDescription)
                         }else{
                             if let _ = JSONData["access_token"] as? String  {
-                                //print(JSONData)
+                                
                                 //Save the access_token for future use
                                 self.access_token = JSONData["access_token"] as? String
                                 
@@ -122,8 +121,6 @@ extension BCClient{
                     let userdata = data as! NSData
                     BCClient.parseJSONWithCompletionHandler(userdata) { (JSONData, parseError) in
                         
-                        print("JSON User Data: \(JSONData)")
-                        
                         if parseError != nil{
                             
                             completionHandler(success: false, errorString: parseError!.localizedDescription)
@@ -174,8 +171,6 @@ extension BCClient{
                     let userdata = data as! NSData
                     BCClient.parseJSONWithCompletionHandler(userdata) { (JSONData, parseError) in
                         
-                        print("JSON User Data: \(JSONData)")
-                        
                         if parseError != nil{
                             
                             completionHandler(result: nil, errorString: parseError!.localizedDescription)
@@ -206,9 +201,9 @@ extension BCClient{
                 "Authorization":"Bearer \(self.access_token)"
             ]
             _ = taskForDELETEMethod(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)", parameters: parameters,headers:headers) { result, error in
-                //print(Constants.baseSecuredBCountURL + BCClient.Methods.bCount+"\(bcountId)")
+            
                 /* 3. Send the desired value(s) to completion handler */
-                // print(error)
+                
                 if error != nil {
                     
                     completionHandler(result: false, errorString: error!.localizedFailureReason!)
@@ -249,8 +244,6 @@ extension BCClient{
                 else{
                     let userdata = data as! NSData
                     BCClient.parseJSONWithCompletionHandler(userdata) { (JSONData, parseError) in
-                        
-                        print("JSON User Data: \(JSONData)")
                         
                         if parseError != nil{
                             

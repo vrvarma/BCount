@@ -38,7 +38,6 @@ class BCountDisplayTableByDateController:UIViewController, UITableViewDelegate, 
         userInfo = BCClient.sharedInstance.userInfo
         do {
             try fetchedResultsController.performFetch()
-            print("Yellow \(fetchedResultsController.fetchedObjects?.count)")
         } catch {}
         
     }
@@ -131,8 +130,6 @@ class BCountDisplayTableByDateController:UIViewController, UITableViewDelegate, 
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             
             let id = "bcountInfoCell"
-            
-            //print(indexPath)
             let bcount = fetchedResultsController.objectAtIndexPath(indexPath) as! BCount
             
             let cell = tableView.dequeueReusableCellWithIdentifier(id) as! BCountInfoTableViewCell
@@ -147,13 +144,12 @@ class BCountDisplayTableByDateController:UIViewController, UITableViewDelegate, 
         
         //Show the selected meme in a Detail View
         let bcount = fetchedResultsController.objectAtIndexPath(indexPath) as! BCount
-        print("Update BCount \(bcount.id)")
+        
         BCClient.sharedInstance.bcount = bcount
         let controller = storyboard!.instantiateViewControllerWithIdentifier("BCountDisplayViewController") as! BCountDisplayViewController
         controller.bcount = bcount
         
         navigationController?.pushViewController(controller, animated: true)
-        print("Hello World!!")
     }
     
     func tableView(tableView: UITableView,

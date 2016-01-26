@@ -107,8 +107,6 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             
             let id = "bcountInfoCell"
-            
-            //print(indexPath)
             let bcount = fetchedResultsController.objectAtIndexPath(indexPath) as! BCount
             
             let cell = tableView.dequeueReusableCellWithIdentifier(id) as! BCountInfoTableViewCell
@@ -123,7 +121,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         
         //Show the selected meme in a Detail View
         let bcount = fetchedResultsController.objectAtIndexPath(indexPath) as! BCount
-        //print("Update BCount \(bcount.id)")
+        
         BCClient.sharedInstance.bcount = bcount
         let controller = storyboard!.instantiateViewControllerWithIdentifier("BCountDisplayViewController") as! BCountDisplayViewController
         controller.bcount = bcount
@@ -283,9 +281,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func setEditMode(sender: UIBarButtonItem) {
         
-        print(tableView.editing)
-        
-        if tableView.editing == true{
+        if tableView.editing {
             
             //We're in edit mode
             //Set the tableView to non-edit mode

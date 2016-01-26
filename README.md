@@ -17,14 +17,41 @@ BCount is an iOS app to store, retrieve and view blood counts and Health indicat
 
 ##User Notes
 1.  Sign up for an account using this [Sign Up](http://jbossews-soulbuzz.rhcloud.com/signup.html) link
+
+![Signup] (ScreenShots/BCountSignup.png)
+
 2.  Install the app
+
 3.  Upon login into the app, the user can add, delete and update blood counts.
-    ![Login](ScreenShots/LoginScreen.png)
+
+![Login](ScreenShots/LoginScreen.png)
+
 4.  There are 4 tabs available:
-    - Table View:  Where the user can add, delete and update the counts
+    - Blood Count View:  Where the user can add, delete and update the counts
+      -  List of Counts
+         
+         ![List] (ScreenShots/TableViewList.png)
+      -  Add Blood Counts
+         
+         ![Add Blood Count] (ScreenShots/AddBloodCount.png)
+      -  Update Blood Count
+         
+         ![Update Blood Count] (ScreenShots/UpdateBloodCount.png)
+    
     - Chart View:  View the line chart of the different functional points
-    - Calendar View: Group the counts by day, select a date and view the counts by day
+         
+        ![Chart View](ScreenShots/BCountChartView.png)
+
+    - Calendar View: Group the counts by days, select a date and view the counts by day
+         
+        ![Calendar View](ScreenShots/CalendarView.png)
+    
     - Settings page:  Which has an About Page, and Page Settings.  Page Settings is for the user to set the max number of rows per request.
+         
+         ![Settings Page](ScreenShots/SettingsScreen.png)
+         
+         ![Page Settings Page](ScreenShots/PageSettings.png)
+         
 
 ##Developer Notes
 1. The BCount project workspace has been generated using [CocoaPods] (https://cocoapods.org/) 

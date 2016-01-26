@@ -479,7 +479,7 @@
         <scene sceneID="afx-si-tGs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Qg-6r-bAM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="-3" title="" image="list" id="1MJ-ul-c7e"/>
+                    <tabBarItem key="tabBarItem" tag="-3" title="" image="List" id="1MJ-ul-c7e"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0WV-zw-XzE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1058,9 +1058,9 @@
     </scenes>
     <resources>
         <image name="Line Chart-50" width="30" height="30"/>
+        <image name="List" width="32" height="32"/>
         <image name="blood_drop_256" width="128" height="128"/>
         <image name="calendar" width="32" height="32"/>
-        <image name="list" width="32" height="32"/>
         <image name="settings" width="25" height="25"/>
     </resources>
 </document>

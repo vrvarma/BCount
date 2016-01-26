@@ -20,6 +20,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var noRecordsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,6 +249,7 @@ class BCountTableViewController:UIViewController, UITableViewDelegate, UITableVi
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
+            self.noRecordsLabel.hidden = !errorFlag
             self.tableView.hidden = errorFlag
             self.activitityIndicator.stopAnimating()
         })

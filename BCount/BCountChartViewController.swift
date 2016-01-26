@@ -19,6 +19,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
     
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var chartTypeTextField: UITextField!
+    @IBOutlet weak var noRecordsLabel: UILabel!
     
     var countTypeData: [String] = [String]()
     
@@ -40,73 +41,81 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
         do {
             try fetchedResultsController.performFetch()
         } catch {}
+        
         populateChart(chartTypeTextField.text!)
     }
     
     func populateChart(type:String){
         
-        let labelSettings = ChartLabelSettings(font: ChartDefaults.labelFont)
-        
-        let (xAxisValues, yAxisValues, chartPoints, displayType) = generateChartValues(type,labelSettings: labelSettings)
-        
-        //In case of typing an error text default to Platelet
-        chartTypeTextField.text = displayType
-        
-        let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Date", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yAxisValues, axisTitleLabel: ChartAxisLabel(text: displayType, settings: labelSettings.defaultVertical()))
-        let scrollViewFrame = ChartDefaults.chartFrame(self.chartView.bounds)
-        
-        let chartFrame = CGRectMake(0, 0, 1500, scrollViewFrame.size.height + 10)
-        let chartSettings = ChartDefaults.chartSettings
-        chartSettings.trailing = 40
-        chartSettings.top = 40
-        chartSettings.bottom = 20
-        chartSettings.leading=20
-        chartSettings.labelsToAxisSpacingX = 20
-        chartSettings.labelsToAxisSpacingY = 20
-        
-        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.redColor(), animDuration: 1, animDelay: 0)
-        
-        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
-        
-        let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
-        
-        let trendLineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])
-        
-        let chartPointsLineLayer = ChartPointsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: chartPoints)
-        
-        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ChartDefaults.guidelinesWidth)
-        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: settings)
-        
-        let dividersSettings =  ChartDividersLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ChartDefaults.guidelinesWidth, start: Env.iPad ? 7 : 3, end: 0, onlyVisibleValues: true)
-        let dividersLayer = ChartDividersLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: dividersSettings)
-        let chart = Chart(
-            frame: chartFrame,
-            layers: [
-                xAxis,
-                yAxis,
-                guidelinesLayer,
-                chartPointsLineLayer,
-                trendLineLayer,
-                dividersLayer
-            ]
-        )
-        
-        // calculate coords space in the background to keep UI smooth
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        if fetchedResultsController.fetchedObjects?.count > 0 {
             
+            noRecordsLabel.hidden = true
             
-            dispatch_async(dispatch_get_main_queue()) {
-                self.chartView.removeAllSubviews()
-                let scrollView = UIScrollView(frame: scrollViewFrame)
-                scrollView.contentSize = CGSizeMake(chartFrame.size.width, scrollViewFrame.size.height)
-                //self.automaticallyAdjustsScrollViewInsets = false // nested view controller - this is in parent
-                scrollView.addSubview(chart.view)
+            let labelSettings = ChartLabelSettings(font: ChartDefaults.labelFont)
+            
+            let (xAxisValues, yAxisValues, chartPoints, displayType) = generateChartValues(type,labelSettings: labelSettings)
+            
+            //In case of typing an error text default to Platelet
+            chartTypeTextField.text = displayType
+            
+            let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Date", settings: labelSettings))
+            let yModel = ChartAxisModel(axisValues: yAxisValues, axisTitleLabel: ChartAxisLabel(text: displayType, settings: labelSettings.defaultVertical()))
+            let scrollViewFrame = ChartDefaults.chartFrame(self.chartView.bounds)
+            
+            let chartFrame = CGRectMake(0, 0, 1500, scrollViewFrame.size.height + 10)
+            let chartSettings = ChartDefaults.chartSettings
+            chartSettings.trailing = 40
+            chartSettings.top = 40
+            chartSettings.bottom = 20
+            chartSettings.leading=20
+            chartSettings.labelsToAxisSpacingX = 20
+            chartSettings.labelsToAxisSpacingY = 20
+            
+            let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.redColor(), animDuration: 1, animDelay: 0)
+            
+            let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
+            
+            let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
+            
+            let trendLineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])
+            
+            let chartPointsLineLayer = ChartPointsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: chartPoints)
+            
+            let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ChartDefaults.guidelinesWidth)
+            let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: settings)
+            
+            let dividersSettings =  ChartDividersLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ChartDefaults.guidelinesWidth, start: Env.iPad ? 7 : 3, end: 0, onlyVisibleValues: true)
+            let dividersLayer = ChartDividersLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: dividersSettings)
+            let chart = Chart(
+                frame: chartFrame,
+                layers: [
+                    xAxis,
+                    yAxis,
+                    guidelinesLayer,
+                    chartPointsLineLayer,
+                    trendLineLayer,
+                    dividersLayer
+                ]
+            )
+            
+            // calculate coords space in the background to keep UI smooth
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                 
-                self.chartView.addSubview(scrollView)
-                self.chart = chart
                 
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.chartView.removeAllSubviews()
+                    let scrollView = UIScrollView(frame: scrollViewFrame)
+                    scrollView.contentSize = CGSizeMake(chartFrame.size.width, scrollViewFrame.size.height)
+                    //self.automaticallyAdjustsScrollViewInsets = false // nested view controller - this is in parent
+                    scrollView.addSubview(chart.view)
+                    
+                    self.chartView.addSubview(scrollView)
+                    self.chart = chart
+                    
+                }
             }
+        }else{
+             noRecordsLabel.hidden = false
         }
     }
     
@@ -163,7 +172,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.wbc!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
             return (xAxisValues,yAxisValues,chartPoints,type)
-
+            
         default:
             
             let xAxisValues = generateXAxisValues(displayFormatter, labelSettings: labelSettings)

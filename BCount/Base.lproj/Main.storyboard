@@ -161,11 +161,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Blood Counts added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-so-WBl">
+                                <rect key="frame" x="208" y="290" width="183" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dEK-so-WBl" firstAttribute="centerY" secondItem="fiL-qd-MPR" secondAttribute="centerY" id="7pH-Nq-GQc"/>
                             <constraint firstItem="e9w-Kj-hAe" firstAttribute="bottom" secondItem="Y5S-tz-TSa" secondAttribute="top" id="8S3-ra-mP5"/>
                             <constraint firstItem="659-LK-hFB" firstAttribute="leading" secondItem="fiL-qd-MPR" secondAttribute="leadingMargin" id="Bic-S3-uaW"/>
+                            <constraint firstItem="dEK-so-WBl" firstAttribute="centerX" secondItem="e9w-Kj-hAe" secondAttribute="centerX" id="HiR-Lh-Bf6"/>
                             <constraint firstItem="NNj-Od-VhE" firstAttribute="leading" secondItem="659-LK-hFB" secondAttribute="trailing" constant="33" id="KkM-r2-VET"/>
                             <constraint firstItem="e9w-Kj-hAe" firstAttribute="leading" secondItem="fiL-qd-MPR" secondAttribute="leading" constant="20" id="iMj-OU-3vR"/>
                             <constraint firstItem="NNj-Od-VhE" firstAttribute="top" secondItem="RNR-Nr-cWs" secondAttribute="bottom" constant="5" id="j3F-pW-fDe"/>
@@ -179,6 +187,7 @@
                     <connections>
                         <outlet property="chartTypeTextField" destination="NNj-Od-VhE" id="ysi-0V-qgW"/>
                         <outlet property="chartView" destination="e9w-Kj-hAe" id="9Ku-dh-oQJ"/>
+                        <outlet property="noRecordsLabel" destination="dEK-so-WBl" id="oVZ-qJ-dtR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hp-gn-Ekx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,7 +206,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="307" affinity="minY"/>
+                            <userLayoutGuide location="306" affinity="minY"/>
                             <userLayoutGuide location="307" affinity="minY"/>
                             <userLayoutGuide location="301" affinity="minX"/>
                         </userGuides>
@@ -243,9 +252,17 @@
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                                 <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Blood Counts added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSA-SB-yTi">
+                                <rect key="frame" x="209" y="290" width="183" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nSA-SB-yTi" firstAttribute="top" secondItem="Rvr-Ou-CMd" secondAttribute="top" id="4nN-eS-gIH"/>
+                            <constraint firstItem="nSA-SB-yTi" firstAttribute="centerX" secondItem="Rvr-Ou-CMd" secondAttribute="centerX" id="OAj-G8-ROj"/>
                             <constraint firstItem="SWQ-M9-UmW" firstAttribute="top" secondItem="pkj-66-oLP" secondAttribute="top" id="TLO-BV-kAo"/>
                             <constraint firstItem="SWQ-M9-UmW" firstAttribute="centerX" secondItem="Rvr-Ou-CMd" secondAttribute="centerX" id="VWk-UO-AYZ"/>
                             <constraint firstAttribute="trailing" secondItem="SWQ-M9-UmW" secondAttribute="trailing" id="h2r-lc-Vv9"/>
@@ -278,6 +295,7 @@
                     <connections>
                         <outlet property="activitityIndicator" destination="Rvr-Ou-CMd" id="A8e-th-SSn"/>
                         <outlet property="add" destination="u9H-tN-Q0I" id="HFE-qI-gLs"/>
+                        <outlet property="noRecordsLabel" destination="nSA-SB-yTi" id="v2P-0L-yXv"/>
                         <outlet property="refresh" destination="ERW-M9-wHb" id="rg5-cJ-1j0"/>
                         <outlet property="tableView" destination="SWQ-M9-UmW" id="sdg-gb-Pmf"/>
                     </connections>
@@ -913,13 +931,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgM-M9-ESw">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgM-M9-ESw">
                                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HgM-M9-ESw" firstAttribute="centerX" secondItem="4v7-c5-m48" secondAttribute="centerX" id="Ae6-cp-Ndh"/>
+                                                <constraint firstItem="HgM-M9-ESw" firstAttribute="leading" secondItem="4v7-c5-m48" secondAttribute="leading" id="CHk-3O-9AS"/>
+                                                <constraint firstAttribute="bottom" secondItem="HgM-M9-ESw" secondAttribute="bottom" id="LEl-nj-ciY"/>
+                                                <constraint firstItem="HgM-M9-ESw" firstAttribute="top" secondItem="4v7-c5-m48" secondAttribute="top" id="hEf-Qq-Im9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="Yea-kr-zEh" kind="show" id="Kex-QX-zG1"/>
@@ -932,13 +956,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-bO-GkQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page Setting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-bO-GkQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xj5-bO-GkQ" firstAttribute="top" secondItem="gCD-tt-IbZ" secondAttribute="top" id="IOg-KX-9ea"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xj5-bO-GkQ" secondAttribute="bottom" id="Iqg-xS-Fyg"/>
+                                                <constraint firstItem="Xj5-bO-GkQ" firstAttribute="leading" secondItem="gCD-tt-IbZ" secondAttribute="leading" id="UMg-Kd-Pjx"/>
+                                                <constraint firstItem="Xj5-bO-GkQ" firstAttribute="centerX" secondItem="gCD-tt-IbZ" secondAttribute="centerX" id="otU-Tl-N6H"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="rL1-eV-2o8" kind="show" id="cwn-OG-LW5"/>

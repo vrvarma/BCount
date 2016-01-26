@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="-842" y="-2493"/>
         </scene>
-        <!--Count Chart View Controller-->
+        <!--Blood Count Chart-->
         <scene sceneID="54j-NS-JlG">
             <objects>
                 <viewController storyboardIdentifier="BCountChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGL-Dw-lpV" customClass="BCountChartViewController" customModule="BCount" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +175,7 @@
                             <constraint firstItem="e9w-Kj-hAe" firstAttribute="top" secondItem="659-LK-hFB" secondAttribute="bottom" constant="8" symbolic="YES" id="x23-Md-P9B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Dlp-7A-GH4"/>
+                    <navigationItem key="navigationItem" title="Blood Count Chart" id="Dlp-7A-GH4"/>
                     <connections>
                         <outlet property="chartTypeTextField" destination="NNj-Od-VhE" id="ysi-0V-qgW"/>
                         <outlet property="chartView" destination="e9w-Kj-hAe" id="9Ku-dh-oQJ"/>

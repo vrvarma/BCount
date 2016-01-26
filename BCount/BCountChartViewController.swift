@@ -47,11 +47,13 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
         
         let labelSettings = ChartLabelSettings(font: ChartDefaults.labelFont)
         
-        let (xAxisValues, yAxisValues, chartPoints) = generateChartValues(type,labelSettings: labelSettings)
+        let (xAxisValues, yAxisValues, chartPoints, displayType) = generateChartValues(type,labelSettings: labelSettings)
         
+        //In case of typing an error text default to Platelet
+        chartTypeTextField.text = displayType
         
-        let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Date Axis title", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yAxisValues, axisTitleLabel: ChartAxisLabel(text: "\(type) Axis title", settings: labelSettings.defaultVertical()))
+        let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Date", settings: labelSettings))
+        let yModel = ChartAxisModel(axisValues: yAxisValues, axisTitleLabel: ChartAxisLabel(text: displayType, settings: labelSettings.defaultVertical()))
         let scrollViewFrame = ChartDefaults.chartFrame(self.chartView.bounds)
         
         let chartFrame = CGRectMake(0, 0, 1500, scrollViewFrame.size.height + 10)
@@ -108,7 +110,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
         }
     }
     
-    func generateChartValues(type: String,labelSettings: ChartLabelSettings) ->([ChartAxisValue],[ChartAxisValue],[ChartPoint]){
+    func generateChartValues(type: String,labelSettings: ChartLabelSettings) ->([ChartAxisValue],[ChartAxisValue],[ChartPoint],String){
         
         let displayFormatter = NSDateFormatter()
         displayFormatter.dateFormat = "MMM dd"
@@ -124,7 +126,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
             for bcount in (fetchedResultsController.fetchedObjects as? [BCount])!{
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.anc!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
-            return (xAxisValues,yAxisValues,chartPoints)
+            return (xAxisValues,yAxisValues,chartPoints,type)
         case "HGB":
             
             let xAxisValues = generateXAxisValues(displayFormatter, labelSettings: labelSettings)
@@ -136,7 +138,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
             for bcount in (fetchedResultsController.fetchedObjects as? [BCount])!{
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.hgb!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
-            return (xAxisValues,yAxisValues,chartPoints)
+            return (xAxisValues,yAxisValues,chartPoints,type)
         case "RBC":
             
             let xAxisValues = generateXAxisValues(displayFormatter, labelSettings: labelSettings)
@@ -148,7 +150,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
             for bcount in (fetchedResultsController.fetchedObjects as? [BCount])!{
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.rbc!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
-            return (xAxisValues,yAxisValues,chartPoints)
+            return (xAxisValues,yAxisValues,chartPoints,type)
         case "WBC":
             
             let xAxisValues = generateXAxisValues(displayFormatter, labelSettings: labelSettings)
@@ -160,7 +162,7 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
             for bcount in (fetchedResultsController.fetchedObjects as? [BCount])!{
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.wbc!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
-            return (xAxisValues,yAxisValues,chartPoints)
+            return (xAxisValues,yAxisValues,chartPoints,type)
 
         default:
             
@@ -173,7 +175,8 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
             for bcount in (fetchedResultsController.fetchedObjects as? [BCount])!{
                 chartPoints.append(createChartPoint(bcount.createdDate!, y: bcount.platelet!.doubleValue,formatter: displayFormatter, labelSettings: labelSettings))
             }
-            return (xAxisValues,yAxisValues,chartPoints)}
+            return (xAxisValues,yAxisValues,chartPoints,"PLATELET")
+        }
         
     }
     func generateXAxisValues(formatter:NSDateFormatter,  labelSettings: ChartLabelSettings) -> [ChartAxisValueDate] {

@@ -353,11 +353,24 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate,UIPicke
     
     func donePressed(sender: UIBarButtonItem) {
         
+        NSDateFormatter.localizedStringFromDate(selectedDate,
+            dateStyle: .MediumStyle,
+            timeStyle: .MediumStyle)
         dateTextField.resignFirstResponder()
     }
     
     func doneReasonPressed(sender: UIBarButtonItem) {
         
+        var found = false
+        for reason in reasonPickerData {
+            
+            if reason == reasonTextField.text{
+                found = true
+            }
+        }
+        if !found {
+            reasonTextField.text = reasonPickerData[0]
+        }
         reasonTextField.resignFirstResponder()
     }
     

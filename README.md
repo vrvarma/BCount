@@ -19,6 +19,7 @@ BCount is an iOS app to store, retrieve and view blood counts and Health indicat
 1.  Sign up for an account using this [Sign Up](http://jbossews-soulbuzz.rhcloud.com/signup.html) link
 2.  Install the app
 3.  Upon login into the app, the user can add, delete and update blood counts.
+    
 4.  There are 4 tabs available:
     - Table View:  Where the user can add, delete and update the counts
     - Chart View:  View the line chart of the different functional points

@@ -236,11 +236,15 @@ class BCountChartViewController: UIViewController,NSFetchedResultsControllerDele
     
     // Mark: - Fetched Results Controller
     lazy var fetchedResultsController: NSFetchedResultsController = {
+        let calendar = NSCalendar.currentCalendar()
+        
+        let firstDateOfMonth: NSDate = calendar.dateByAddingUnit(.Month, value:-2, toDate:NSDate(), options:[])!
+        //print(firstDateOfMonth)
         
         let fetchRequest = NSFetchRequest(entityName: "BCount")
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdDate", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "userInfo == %@", self.userInfo);
+        fetchRequest.predicate = NSPredicate(format: "userInfo == %@ and createdDate >=%@", argumentArray:[self.userInfo,firstDateOfMonth])
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
             managedObjectContext: self.sharedContext,
@@ -298,9 +302,9 @@ extension BCountChartViewController{
         toolBar.backgroundColor = UIColor.blackColor()
         
         
-        let defaultButton = UIBarButtonItem(title: "Default", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedToolBarBtn:")
+        let defaultButton = UIBarButtonItem(title: "Default", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BCountChartViewController.tappedToolBarBtn(_:)))
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneReasonPressed:")
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(BCountChartViewController.doneReasonPressed(_:)))
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         

@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftCharts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C3068792E4FA024AA314837E8EE0D67</key>
+		<key>121EF472FE576A8714E8F82EADB9A473</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>680A6A03139BA563CDD10F1ED7A3F3FF</key>
+		<key>50590FD33BFAD28AF55D309D09F09212</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C77048D1883F76E779987A0CC9CEC9D</key>
+		<key>B9FB973543A7F063C326E314EEBE32B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDE0E80B8B4B54D10001245C2150246E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D9AD7420B2C5EECC2DB662BFC8A97D23</key>
+		<key>E2442AB4B9FCE9C7C03E9E2DA9D4580B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

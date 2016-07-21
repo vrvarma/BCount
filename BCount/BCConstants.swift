@@ -11,8 +11,8 @@ extension BCClient {
     
     struct Constants {
         static let baseSecuredBCountURL: String = "https://jbossews-soulbuzz.rhcloud.com"
-        static let api_key: String = "353b302c44574f565045687e534e7d6a"
-        static let secret_key: String = "286924697e615a672a646a493545646c"
+        static let api_key: String = "5e572e694e4d61763b567059273a4d3d"
+        static let secret_key: String = "316457735c4055642744596b302e2151"
         static let max_count_per_page = 21
         static let BCountSignUpURL: String = "https://jbossews-soulbuzz.rhcloud.com/signup.html"
     }

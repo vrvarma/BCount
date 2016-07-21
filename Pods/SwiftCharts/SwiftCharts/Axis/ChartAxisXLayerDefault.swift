@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A ChartAxisLayer for X axes
 class ChartAxisXLayerDefault: ChartAxisLayerDefault {
    
     override var width: CGFloat {
@@ -39,7 +40,7 @@ class ChartAxisXLayerDefault: ChartAxisLayerDefault {
     override func generateLineDrawer(offset offset: CGFloat) -> ChartLineDrawer {
         let p1 = CGPointMake(self.p1.x, self.p1.y + offset)
         let p2 = CGPointMake(self.p2.x, self.p2.y + offset)
-        return ChartLineDrawer(p1: p1, p2: p2, color: self.settings.lineColor)
+        return ChartLineDrawer(p1: p1, p2: p2, color: self.settings.lineColor, strokeWidth: self.settings.axisStrokeWidth)
     }
     
     override func generateAxisTitleLabelsDrawers(offset offset: CGFloat) -> [ChartLabelDrawer] {
@@ -49,7 +50,7 @@ class ChartAxisXLayerDefault: ChartAxisLayerDefault {
     
     private func generateAxisTitleLabelsDrawers(labels: [ChartAxisLabel], spacingLabelAxisX: CGFloat, spacingLabelBetweenAxis: CGFloat, offset: CGFloat) -> [ChartLabelDrawer] {
         
-        let rowHeights = self.rowHeightsForRows(rows: labels.map{[$0]})
+        let rowHeights = self.rowHeightsForRows(labels.map { [$0] })
         
         return labels.enumerate().map{(index, label) in
             
@@ -84,7 +85,7 @@ class ChartAxisXLayerDefault: ChartAxisLayerDefault {
             }
         }
         
-        return self.rowHeightsForRows(rows: rows)
+        return self.rowHeightsForRows(rows)
     }
     
     override func generateLabelDrawers(offset offset: CGFloat) -> [ChartLabelDrawer] {
@@ -120,10 +121,10 @@ class ChartAxisXLayerDefault: ChartAxisLayerDefault {
     
     
     // Get max text height for each row of axis values
-    private func rowHeightsForRows(rows rows: [[ChartAxisLabel?]]) -> [CGFloat] {
-        return rows.map {row in
-            row.reduce(-1) {maxHeight, labelMaybe in
-                return max(maxHeight, self.labelMaybeSize(labelMaybe).height)
+    private func rowHeightsForRows(rows: [[ChartAxisLabel?]]) -> [CGFloat] {
+        return rows.map { row in
+            row.flatMap { $0 }.reduce(-1) { maxHeight, label in
+                return max(maxHeight, label.textSize.height)
             }
         }
     }

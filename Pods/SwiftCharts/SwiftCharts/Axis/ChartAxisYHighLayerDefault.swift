@@ -8,14 +8,17 @@
 
 import UIKit
 
+/// A ChartAxisLayer for high Y axes
 class ChartAxisYHighLayerDefault: ChartAxisYLayerDefault {
     
     override var low: Bool {return false}
-    
+
+    /// The start point of the axis line.
     override var lineP1: CGPoint {
         return self.p1
     }
-    
+
+    /// The end point of the axis line.
     override var lineP2: CGPoint {
         return self.p2
     }
@@ -35,10 +38,17 @@ class ChartAxisYHighLayerDefault: ChartAxisYLayerDefault {
         let x = self.p1.x + offset + halfStrokeWidth
         let p1 = CGPointMake(x, self.p1.y)
         let p2 = CGPointMake(x, self.p2.y)
-        return ChartLineDrawer(p1: p1, p2: p2, color: self.settings.lineColor)
+        return ChartLineDrawer(p1: p1, p2: p2, color: self.settings.lineColor, strokeWidth: self.settings.axisStrokeWidth)
     }
     
-    override func labelsX(offset offset: CGFloat, labelWidth: CGFloat) -> CGFloat {
-        return self.p1.x + offset
+    override func labelsX(offset offset: CGFloat, labelWidth: CGFloat, textAlignment: ChartLabelTextAlignment) -> CGFloat {
+        var labelsX: CGFloat
+        switch textAlignment {
+        case .Left, .Default:
+            labelsX = self.p1.x + offset
+        case .Right:
+            labelsX = self.p1.x + offset + self.labelsMaxWidth - labelWidth
+        }
+        return labelsX
     }
 }

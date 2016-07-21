@@ -69,7 +69,7 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate,UIPicke
         
         sender.inputView = datePickerView
         
-        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(BCountDisplayViewController.datePickerValueChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
     }
     
@@ -278,9 +278,9 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate,UIPicke
         toolBar.backgroundColor = UIColor.blackColor()
         
         
-        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedTodayToolBarBtn:")
+        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BCountDisplayViewController.tappedTodayToolBarBtn(_:)))
         
-        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "donePressed:")
+        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(BCountDisplayViewController.donePressed(_:)))
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         
@@ -321,9 +321,9 @@ class BCountDisplayViewController: UIViewController, UITextFieldDelegate,UIPicke
         toolBar.backgroundColor = UIColor.blackColor()
         
         
-        let defaultButton = UIBarButtonItem(title: "Default", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedToolBarBtn:")
+        let defaultButton = UIBarButtonItem(title: "Default", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BCountDisplayViewController.tappedToolBarBtn(_:)))
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneReasonPressed:")
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(BCountDisplayViewController.doneReasonPressed(_:)))
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         
